@@ -1,4 +1,5 @@
 require 'sinatra'
+require_relative 'rolodex.rb'
 require_relative 'contact.rb'
 
 get '/' do
