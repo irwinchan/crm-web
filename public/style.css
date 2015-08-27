@@ -12,6 +12,23 @@ a {
   color: #995940;
   text-decoration: none;
 }
+/**** PAGE ****/
+
+.page {
+  margin: 0 auto;
+  max-width: 960px;
+  background: #E6D7C4;
+  overflow: hidden;
+}
+
+/** Header **/
+header {
+  background: #AB956E;
+}
+
+.banner_title {
+  text-align: center;
+}
 
 /** navigation **/
 nav {
@@ -41,29 +58,15 @@ nav li:last-child {
   border-bottom: none;
 }
 
-/** Page **/
-header {
-  background: #AB956E;
-}
-
-.banner_title {
-  text-align: center;
-}
-
-.page {
-  margin: 0 auto;
-  max-width: 960px;
-  background: #E6D7C4;
-  overflow: hidden;
-}
+/** Main Content **/
 
 .main_content {
   max-width: 593px;
   padding-left: 50px;
   float: left;
-
 }
 
+/** New Contact **/
 ul.new_contact {
   list-style: none;
   text-align: right;
@@ -94,7 +97,6 @@ ul.new_contact .note p {
 .contact_list {
   list-style: none;
 }
-
 
 /** Footer **/
 footer {
