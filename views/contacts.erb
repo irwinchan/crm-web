@@ -1,5 +1,5 @@
 <ul class="contact_list">
   <% $rolodex.contacts.each do |contact| %>
-    <li>ID: <%= contact.id %> - Name: <%= contact.full_name %></li>
+    <li>ID: <a href="/contacts/<%= contact.id %>"><%= contact.id %></a> - Name: <%= contact.full_name %></li>
   <% end %>
 </ul>
