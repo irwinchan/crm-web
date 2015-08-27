@@ -6,8 +6,10 @@
   <li>Notes: <%= @contact.notes %></li>
 <ul>
 
+<div class="form_controls">
 <form action="/contacts/<%= @contact.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit"  name="Delete Contact" value="Delete">
 </form>
-
+<a href="/contacts/<%= @contact.id %>/edit">Edit</a>
+</div>
