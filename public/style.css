@@ -98,6 +98,22 @@ ul.new_contact .note p {
   list-style: none;
 }
 
+/** Display Contact **/
+
+ul.contact_info {
+  list-style: none;
+}
+
+ul.contact_info li.first_name {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+ul.contact_info li.last_name {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
 /** Footer **/
 footer {
   clear: both;
