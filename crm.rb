@@ -39,22 +39,10 @@ get '/contacts/:id' do
   end
 end
 
-get '/modify_contact' do
-  @title = "My CRM - Modify Contact"
-   @banner_title = "Modify Contact"
-  erb :modify_contact
-end
-
 get '/display_contact_attribute' do
   @title = "My CRM - Display Contact Attribute"
    @banner_title = "Display Contact Attribute"
   erb :display_contact_attribute
-end
-
-get '/delete_contact' do
-  @title = "My CRM - Delete Contact"
-   @banner_title = "Delete Contact"
-  erb :delete_contact
 end
 
 get "/contacts/:id/edit" do
