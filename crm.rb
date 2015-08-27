@@ -4,6 +4,11 @@ require_relative 'contact.rb'
 
 $rolodex = Rolodex.new
 
+# TEST DATA
+$rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
+$rolodex.add_contact(Contact.new("Stan", "Lee", "Stan@bitmakerlabs.com", "Stan the man"))
+$rolodex.add_contact(Contact.new("Chuck", "Norris", "chuck@bitmakerlabs.com", "karate"))
+
 get '/' do
   @crm_app_name = "My CRM"
   @title = "My CRM - Main Menu"
@@ -23,20 +28,17 @@ get '/contacts/new' do
   erb :new_contact
 end
 
-# get '/add_contact' do
-#   erb :add_contact
-# end
+get '/contacts/1000' do
+  @title = "My CRM - Display Contact"
+  @banner_title = "Display Contact"
+  @contact = $rolodex.get_contact_by_id(1000)
+  erb :display_contact
+end
 
 get '/modify_contact' do
   @title = "My CRM - Modify Contact"
    @banner_title = "Modify Contact"
   erb :modify_contact
-end
-
-get '/display_contact' do
-  @title = "My CRM - Display Contact"
-   @banner_title = "Display Contact"
-  erb :display_contact
 end
 
 get '/display_contact_attribute' do
