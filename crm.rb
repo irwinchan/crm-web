@@ -25,14 +25,18 @@ end
 get '/contacts/new' do
   @title = "My CRM - Create New Contact"
   @banner_title = "Create New Contact"
-  erb :new_contact
+    erb :new_contact
 end
 
 get '/contacts/:id' do
   @title = "My CRM - Display Contact"
   @banner_title = "Display Contact"
   @contact = $rolodex.get_contact_by_id(params[:id].to_i)
-  erb :display_contact
+  if @contact
+    erb :display_contact
+  else
+    raise Sinatra::NotFound
+  end
 end
 
 get '/modify_contact' do
