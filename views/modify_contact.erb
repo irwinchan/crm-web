@@ -1,0 +1,24 @@
+<form action="/contacts/<% @contact.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <ul class="contact">
+    <li>
+      <label for="first_name">First Name: </label>
+      <input type="text" id="first_name" name="first_name" value="<%= @contact.first_name %>">
+    </li>
+    <li>
+      <label for="last_name">Last Name: </label>
+      <input type="text" id="last_name" name="last_name" value="<%= @contact.last_name %>">
+    </li>
+    <li>
+      <label for="email">Email: </label>
+      <input type="text" id="email" name="email" value="<%= @contact.email %>">
+    </li>
+    <li class="note">
+      <label for="note">Notes: </label>
+      <textarea type="text" id="note" name="note"><%= @contact.notes %></textarea>
+    </li>
+    <li>
+      <input type="submit" name="Submit">
+    </li>
+  </ul>
+</form>
