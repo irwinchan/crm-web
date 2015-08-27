@@ -28,10 +28,10 @@ get '/contacts/new' do
   erb :new_contact
 end
 
-get '/contacts/1000' do
+get '/contacts/:id' do
   @title = "My CRM - Display Contact"
   @banner_title = "Display Contact"
-  @contact = $rolodex.get_contact_by_id(1000)
+  @contact = $rolodex.get_contact_by_id(params[:id].to_i)
   erb :display_contact
 end
 
