@@ -41,11 +41,13 @@ end
 
 get '/display_contact_attribute' do
   @title = "My CRM - Display Contact Attribute"
-   @banner_title = "Display Contact Attribute"
+  @banner_title = "Display Contact Attribute"
   erb :display_contact_attribute
 end
 
 get "/contacts/:id/edit" do
+  @title = "My CRM - Edit Contact"
+  @banner_title = "Edit Contact"
   @contact = $rolodex.get_contact_by_id(params[:id].to_i)
   erb :modify_contact
 end
