@@ -1,8 +1,23 @@
-<h1>Create New Contact</h1>
 <form action="/contacts" method="post">
-  <input type="text" name="first_name">
-  <input type="text" name="last_name">
-  <input type="text" name="email">
-  <input type="text" name="note">
-  <input type="submit" name="Submit">
+  <ul class="new_contact">
+    <li>
+      First Name:
+      <input type="text" name="first_name">
+    </li>
+    <li>
+      Last Name:
+      <input type="text" name="last_name">
+    </li>
+    <li>
+      Email:
+      <input type="text" name="email">
+    </li>
+    <li class="note">
+
+      <textarea type="text" name="note">notes</textarea>
+    </li>
+    <li>
+      <input type="submit" name="Submit">
+    </li>
+  </ul>
 </form>
