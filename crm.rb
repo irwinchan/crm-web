@@ -57,6 +57,11 @@ get '/delete_contact' do
   erb :delete_contact
 end
 
+get "/contacts/:id/edit" do
+  @contact = $rolodex.get_contact_by_id(params[:id].to_i)
+  erb :modify_contact
+end
+
 post '/contacts' do
   new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note])
   $rolodex.add_contact(new_contact)
