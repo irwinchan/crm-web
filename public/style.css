@@ -67,30 +67,30 @@ nav li:last-child {
 }
 
 /** New Contact **/
-ul.new_contact {
+ul.contact {
   list-style: none;
   text-align: right;
 }
 
-ul.new_contact li {
+ul.contact li {
   padding: 3px 0;
 }
 
-ul.new_contact .note {
+ul.contact .note {
   text-align: center;
 }
 
-ul.new_contact .note textarea {
+ul.contact .note textarea {
   width: 300px;
   height: 200px;
 }
 
-ul.new_contact input {
+ul.contact input {
   border-radius: 1px;
   border: 0;
 }
 
-ul.new_contact .note p {
+ul.contact .note p {
   margin: 0;
 }
 
