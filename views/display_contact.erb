@@ -6,3 +6,8 @@
   <li>Notes: <%= @contact.notes %></li>
 <ul>
 
+<form action="/contacts/<%= @contact.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit"  name="Delete Contact">
+</form>
+
