@@ -1,37 +1,25 @@
 require 'sinatra'
 require 'data_mapper'
 
-require_relative 'rolodex.rb'
+#require_relative 'rolodex.rb'
 # require_relative 'contact.rb'
 
 DataMapper.setup(:default, "sqlite3:database.sqlite3")
 
-$rolodex = Rolodex.new
+#$rolodex = Rolodex.new
 
 class Contact
   include DataMapper::Resource
-  attr_accessor :id, :first_name, :last_name, :email, :note
 
   property :id, Serial
   property :first_name, String
   property :last_name, String
   property :email, String
   property :note, String
-  # def initialize(first_name, last_name, email, note)
-  #   @first_name = first_name
-  #   @last_name = last_name
-  #   @email = email
-  #   @note = note
-  # end
 end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
-
-# TEST DATA
-$rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
-$rolodex.add_contact(Contact.new("Stan", "Lee", "Stan@bitmakerlabs.com", "Stan the man"))
-$rolodex.add_contact(Contact.new("Chuck", "Norris", "chuck@bitmakerlabs.com", "karate"))
 
 get '/' do
   @crm_app_name = "My CRM"
@@ -42,20 +30,21 @@ end
 
 get '/contacts' do
   @title = "My CRM - All Contacts"
-   @banner_title = "All Contacts"
+  @banner_title = "All Contacts"
+  @contacts = Contact.all
   erb :contacts
 end
 
 get '/contacts/new' do
   @title = "My CRM - Create New Contact"
   @banner_title = "Create New Contact"
-    erb :new_contact
+  erb :new_contact
 end
 
 get '/contacts/:id' do
   @title = "My CRM - Display Contact"
   @banner_title = "Display Contact"
-  @contact = $rolodex.get_contact_by_id(params[:id].to_i)
+  @contact = Contact.get(params[:id].to_i)
   if @contact
     erb :display_contact
   else
@@ -77,8 +66,15 @@ get "/contacts/:id/edit" do
 end
 
 post '/contacts' do
-  new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note])
-  $rolodex.add_contact(new_contact)
+  # new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note])
+  # $rolodex.add_contact(new_contact)
+
+  contact = Contact.create(
+    :first_name => params[:first_name],
+    :last_name => params[:last_name],
+    :email => params[:email],
+    :note => params[:note]
+  )
   redirect to('/contacts')
 end
 
