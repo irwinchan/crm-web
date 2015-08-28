@@ -1,8 +1,32 @@
 require 'sinatra'
+require 'data_mapper'
+
 require_relative 'rolodex.rb'
-require_relative 'contact.rb'
+# require_relative 'contact.rb'
+
+DataMapper.setup(:default, "sqlite3:database.sqlite3")
 
 $rolodex = Rolodex.new
+
+class Contact
+  include Datamapper::Resource
+  attr_accessor :id, :first_name, :last_name, :email, :note
+
+  property :id, Serial
+  property :first_name, String
+  property :last_name, String
+  property :email, String
+  property :note, String
+  # def initialize(first_name, last_name, email, note)
+  #   @first_name = first_name
+  #   @last_name = last_name
+  #   @email = email
+  #   @note = note
+  # end
+end
+
+Datamapper.finalize
+Datamapper.auto_upgrade!
 
 # TEST DATA
 $rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
