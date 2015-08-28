@@ -9,7 +9,7 @@ DataMapper.setup(:default, "sqlite3:database.sqlite3")
 $rolodex = Rolodex.new
 
 class Contact
-  include Datamapper::Resource
+  include DataMapper::Resource
   attr_accessor :id, :first_name, :last_name, :email, :note
 
   property :id, Serial
@@ -25,8 +25,8 @@ class Contact
   # end
 end
 
-Datamapper.finalize
-Datamapper.auto_upgrade!
+DataMapper.finalize
+DataMapper.auto_upgrade!
 
 # TEST DATA
 $rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))

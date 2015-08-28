@@ -1,3 +1,6 @@
+<div class="profile_pic">
+</div>
+
 <ul class="contact_info">
   <li class="first_name">First Name: <%= @contact.first_name %></li>
   <li class="last_name">Last Name: <%= @contact.last_name %></li>
@@ -10,6 +13,7 @@
 <form action="/contacts/<%= @contact.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit"  name="Delete Contact" value="Delete">
+
 </form>
 <a href="/contacts/<%= @contact.id %>/edit">Edit</a>
 </div>
