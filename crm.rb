@@ -1,12 +1,7 @@
 require 'sinatra'
 require 'data_mapper'
 
-#require_relative 'rolodex.rb'
-# require_relative 'contact.rb'
-
 DataMapper.setup(:default, "sqlite3:database.sqlite3")
-
-#$rolodex = Rolodex.new
 
 class Contact
   include DataMapper::Resource
@@ -15,7 +10,7 @@ class Contact
   property :first_name, String
   property :last_name, String
   property :email, String
-  property :note, String
+  property :note, Text
 end
 
 DataMapper.finalize
@@ -61,14 +56,11 @@ end
 get "/contacts/:id/edit" do
   @title = "My CRM - Edit Contact"
   @banner_title = "Edit Contact"
-  @contact = $rolodex.get_contact_by_id(params[:id].to_i)
+  @contact = Contact.get(params[:id].to_i)
   erb :modify_contact
 end
 
 post '/contacts' do
-  # new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note])
-  # $rolodex.add_contact(new_contact)
-
   contact = Contact.create(
     :first_name => params[:first_name],
     :last_name => params[:last_name],
@@ -79,12 +71,12 @@ post '/contacts' do
 end
 
 put "/contacts/:id" do
-  @contact = $rolodex.get_contact_by_id(params[:id].to_i)
+  @contact = Contact.get(params[:id].to_i)
   if @contact
-    @contact.first_name = params[:first_name]
-    @contact.last_name = params[:last_name]
-    @contact.email = params[:email]
-    @contact.notes = params[:note]
+    @contact.update(:first_name => params[:first_name])
+    @contact.update(:last_name => params[:last_name])
+    @contact.update(:email => params[:email])
+    @contact.update(:note => params[:note])
 
     redirect to('/contacts')
   else
@@ -93,9 +85,9 @@ put "/contacts/:id" do
 end
 
 delete "/contacts/:id" do
-  @contact = $rolodex.get_contact_by_id(params[:id].to_i)
+  @contact = Contact.get(params[:id].to_i)
   if @contact
-    $rolodex.delete_contact_by_id(params[:id].to_i)
+    @contact.destroy
     redirect to('/contacts')
   else
     raise Sinatra::NotFound
